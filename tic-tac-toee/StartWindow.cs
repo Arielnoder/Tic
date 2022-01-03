@@ -65,8 +65,6 @@ namespace tic_tac_toee
 
         public void game()
         {
-            
-
 
             _button1.Clicked += button1_click;
             _button2.Clicked += button2_click;
@@ -77,7 +75,6 @@ namespace tic_tac_toee
             _button7.Clicked += button7_click;
             _button8.Clicked += button8_click;
             _button9.Clicked += button9_click;
-
 
 
         }
@@ -97,115 +94,131 @@ namespace tic_tac_toee
             return false;
         }
 
-        public bool winRow() {
-            if (_button1.Label == player && _button2.Label == player && _button3.Label == player)
+        public bool winRow()
+        {
+            if (_button1.Label == "X" && _button2.Label == "X" && _button3.Label == "X")
             {
-                _Winer.Text = "The winner is " + player;   
+                _Winer.Text = "The winner is X";
                 return true;
             }
-            if (_button7.Label == _button8.Label && _button7.Label == _button9.Label) {
-                _Winer.Text = "The winner is " + player;   
-            return true;
-        }
-
-         if (_button4.Label == _button5.Label && _button4.Label == _button6.Label) {
-                _Winer.Text = "The winner is " + player;   
-            return true;
-        }
-        return false; 
-        }
-
-
-        public bool winColumn() {
-            if (_button1.Label == player && _button1.Label == player)
+            if (_button1.Label == "O" && _button2.Label == "O" && _button3.Label == "O")
             {
-                _Winer.Text = "The winner is " + player;   
+                _Winer.Text = "The winner is O";
                 return true;
             }
-            if (_button2.Label == _button5.Label && _button2.Label == _button8.Label) {
-                _Winer.Text = "The winner is " + player;   
-            return true;
-        }
-
-           if (_button3.Label == _button6.Label && _button3.Label == _button9.Label) {
-                _Winer.Text = "The winner is " + player;   
-            return true;
-        }
-        return false; 
-        }
-
-         public bool winDiag() {
-            if (_button1.Label == _button5.Label && _button1.Label == _button9.Label)
+            if (_button7.Label == "X" && _button7.Label == "X" && _button9.Label == "X")
             {
-                _Winer.Text = "The winner is " + player;   
+                _Winer.Text = "The winner is X ";
                 return true;
             }
-            if (_button3.Label == _button5.Label && _button3.Label == _button7.Label) {
-                _Winer.Text = "The winner is " + player;   
-            return true;
+
+            if (_button4.Label == "O" && _button5.Label == "O" && _button5.Label == "O")
+            {
+                _Winer.Text = "The winner is O";
+                return true;
+            }
+            return false;
         }
 
-           
-        return false; 
+
+        public bool winColumn()
+        {
+            if (_button1.Label == "O" && _button4.Label == "O" && _button7.Label == "O")
+            {
+                _Winer.Text = "The winner is O";
+                return true;
+            }
+            if (_button1.Label == "X" && _button4.Label == "X" && _button7.Label == "X")
+            {
+                _Winer.Text = "The winner is X";
+                return true;
+            }
+
+            if (_button3.Label == "X" && _button6.Label == "X" && _button9.Label == "X")
+            {
+                _Winer.Text = "The winner is X";
+                return true;
+            }
+
+            if (_button3.Label == "O" && _button6.Label == "O" && _button9.Label == "O")
+            {
+                _Winer.Text = "The winner is O";
+                return true;
+            }
+
+            if (_button2.Label == "X" && _button5.Label == "X" && _button8.Label == "X")
+            {
+                _Winer.Text = "The winner is X";
+                return true;
+            }
+            if (_button2.Label == "O" && _button5.Label == "O" && _button8.Label == "O")
+            {
+                _Winer.Text = "The winner is O";
+                return true;
+            }
+            return false;
+        }
+
+        public bool winDiag()
+        {
+            if (_button1.Label == "X" && _button5.Label == "X" && _button9.Label == "X")
+            {
+                _Winer.Text = "The winner is X";
+                return true;
+            }
+            if (_button1.Label == "O" && _button5.Label == "O" && _button9.Label == "O")
+            {
+                _Winer.Text = "The winner is O";
+                return true;
+            }
+            if (_button3.Label == "X" && _button5.Label == "X" && _button7.Label == "X")
+            {
+                _Winer.Text = "The winner is X";
+                return true;
+            }
+            if (_button3.Label == "O" && _button5.Label == "O" && _button7.Label == "O")
+            {
+                _Winer.Text = "The winner is O";
+                return true;
+            }
+
+
+
+            return false;
+        }
+
+        public bool winCondition()
+        {
+
+            if (_button2.Label == player || _button3.Label == player)
+            {
+
+                if (winColumn())
+                {
+
+                    return true;
+                }
+                if (winRow())
+                {
+
+                    return true;
+                }
+
+            }
+            if (_button3.Label == player || _button1.Label == player)
+            {
+                if (winDiag())
+                {
+                    return true;
+                }
+            }
+            return false;
+
+
         }
 
 
-    public bool winCondition() {
-        if (_button1.Label == player || _button2.Label == player || _button3.Label == player) {
-            if(winColumn()) {
-                return true;
-            }
 
-             if(winDiag()) {
-                return true;
-            }
-
-            if(winRow()) {
-                return true;
-            }
-        }
-         if (_button5.Label == player) {
-            
-
-             if(winDiag()) {
-                return true;
-            }
-
-            if(winColumn()) {
-                return true;
-            }
-             if(winRow()) {
-                return true;
-            }
-         }
-              if (_button6.Label == player) {
-            
-            if(winColumn()) {
-                return true;
-            }
-             if(winRow()) {
-                return true;
-            }
-
-              if (_button6.Label == player) {
-            
-            if(winColumn()) {
-                return true;
-            }
-             if(winRow()) {
-                return true;
-            }
-            
-
-
-        }
-              }
-        return false;
-
-
-
-
-    }
 
 
 
@@ -226,11 +239,14 @@ namespace tic_tac_toee
             {
                 player = "X";
             }
-          
+
 
             _button1.Label = player;
+
+            pc();
+            player = "X";
             winCondition();
-            turns();
+
 
 
 
@@ -249,12 +265,14 @@ namespace tic_tac_toee
             {
                 player = "X";
             }
-             
+
             _button2.Label = player;
-           
+
+            pc();
+            player = "X";
             winCondition();
 
-            turns();
+
 
         }
 
@@ -268,10 +286,13 @@ namespace tic_tac_toee
             {
                 player = "X";
             }
-            
+
             _button3.Label = player;
+
+            pc();
+            player = "X";
             winCondition();
-            turns();
+
 
         }
 
@@ -285,9 +306,13 @@ namespace tic_tac_toee
             {
                 player = "X";
             }
+
             _button4.Label = player;
+
+            pc();
+            player = "X";
             winCondition();
-            turns();
+
 
 
         }
@@ -302,9 +327,13 @@ namespace tic_tac_toee
             {
                 player = "X";
             }
+
             _button5.Label = player;
+
+            pc();
+            player = "X";
             winCondition();
-            turns();
+
 
 
         }
@@ -319,9 +348,13 @@ namespace tic_tac_toee
             {
                 player = "X";
             }
+
             _button6.Label = player;
+
+            pc();
+            player = "X";
             winCondition();
-            turns();
+
 
 
         }
@@ -336,9 +369,14 @@ namespace tic_tac_toee
             {
                 player = "X";
             }
+
             _button7.Label = player;
+           
+            pc();
+            player = "X";
+
             winCondition();
-            turns();
+
 
 
         }
@@ -353,9 +391,13 @@ namespace tic_tac_toee
             {
                 player = "X";
             }
-            _button8.Label = player;
+
+            _button8.Label = "X";
+
+            pc();
+            player = "X";
             winCondition();
-            turns();
+
 
 
 
@@ -371,15 +413,113 @@ namespace tic_tac_toee
             {
                 player = "X";
             }
+
             _button9.Label = player;
+
+            pc();
+            player = "X";
             winCondition();
-            turns();
+
 
 
 
         }
 
+        public void pc()
+        {
+            bool check = true;
+            bool check2 = true;
+            bool check3 = true;
+            bool check4 = true;
+            
+            bool check6 = false;
+            bool check7 = true;
+            bool check8 = true;
 
+
+            if (_button5.Label != "X" && check == true)
+            {
+                player = "O";
+                _button5.Label = player;
+
+                check = false;
+
+
+
+
+            }
+
+            if (_button2.Label == "X" && check2 == true)
+            {
+                if (check == true)
+                {
+                    player = "O";
+                    _button3.Label = player;
+                }
+                player = "X";
+                check2 = false;
+
+
+            }
+
+
+            if (_button1.Label == "X" && _button3.Label == "X" && _button2.Label != "O" && check3 == true && player != "X")
+            {
+                player = "O";
+                _button2.Label = player;
+                player = "X";
+                check3 = false;
+
+
+            }
+
+            if (_button1.Label == "X" && _button2.Label == "X" && check7 == true)
+            {
+                player = "O";
+                _button3.Label = player;
+                player = "X";
+                check7 = false;
+
+
+            }
+            if (_button2.Label == player && _button5.Label == player && check4 == true && _button8.Label != "X")
+            {
+                player = "O";
+                _button8.Label = player;
+                player = "X";
+                check4 = false;
+
+            }
+          if (_button3.Label == player && _button5.Label == player && _button7.Label != "X" && check7 == true)
+            {   
+                
+                player = "O";
+                _button7.Label = player;
+                player = "X";
+                check7 = false;
+
+            }
+
+            if (_button1.Label == "O" && _button5.Label == "O" && _button9.Label != "X" && check6 == false)
+            {
+                player = "O";
+                _button9.Label = player;
+                player = "X";
+                check6 = true;
+            }
+            if (_button2.Label == "O" && _button5.Label == "O" && _button8.Label == "X" && check8 == true)
+            {
+                player = "O";
+
+                _button6.Label = player;
+                player = "X";
+                check8 = false;
+
+            }
+
+
+
+        }
 
 
 
